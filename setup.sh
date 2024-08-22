@@ -8,7 +8,15 @@ fi
 
 echo "Updating package repository and installing required packages..."
 doas pkg_add -u
-doas pkg_add cwm xterm conky nerd-fonts
+doas pkg_add cwm xterm conky wget
+
+# Manual installation of JetBrains Mono Nerd Font
+echo "Downloading and installing JetBrains Mono Nerd Font..."
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+unzip JetBrainsMono.zip -d JetBrainsMono
+fc-cache -fv
 
 echo "Creating configuration directories..."
 mkdir -p ~/.config/cwm
